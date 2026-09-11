@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Test 2 | The Geek Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#191f2f", "surface-container-low": "#141b2b",
+            "surface-container-highest": "#2e3545", "surface": "#0c1322", "on-surface": "#dce2f7",
+            "primary": "#ecd7ff", "primary-container": "#d8b4fe", "on-primary-fixed": "#29074a", "outline": "#968e9a"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface font-body text-on-surface">
+
+<header class="bg-[#0c1322]/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/5">
+  <div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-['Space_Grotesk']">
+    <a href="../index.html" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-200 to-purple-400">The Geek Shop</a>
+    <a class="text-slate-400 hover:text-purple-200 text-sm" href="../index.html">← Back to Store</a>
+  </div>
+</header>
+
+<main class="max-w-screen-2xl mx-auto px-8 py-12 space-y-16">
+  <!-- Top Hero Layout -->
+  <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <!-- Big Thumbnail -->
+    <div class="lg:col-span-6 space-y-4">
+      <div class="aspect-4/3 bg-surface-container-low rounded-2xl overflow-hidden border border-white/5">
+        <img id="main-image" class="w-full h-full object-cover" src="https://aulakeyboard.com/wp-content/uploads/2025/06/203A5822_e42eb97e-11c1-48a7-9140-ad02cf54042c-600x600.webp">
+      </div>
+      <div id="thumbnails-container" class="grid grid-cols-4 gap-4"></div>
+    </div>
+
+    <!-- Product Header & Merchants -->
+    <div class="lg:col-span-6 space-y-6">
+      <h1 id="product-name" class="text-4xl lg:text-5xl font-bold font-display text-white tracking-tight">Test 2</h1>
+      <p id="product-price" class="text-2xl font-display text-primary font-semibold">11</p>
+
+      <!-- Buy Here Merchant Buttons -->
+      <div class="space-y-3 pt-2">
+        <span class="text-xs uppercase tracking-widest text-outline font-bold block">Buy Here</span>
+        <div id="merchant-buttons" class="flex flex-wrap items-center gap-3"></div>
+      </div>
+
+      <!-- Tech Specs Sidebar Grid -->
+      <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 mt-6">
+        <h3 class="text-xs font-bold tracking-widest uppercase text-primary mb-4">Specifications</h3>
+        <div id="product-specs" class="space-y-3"><div class="flex justify-between items-end border-b border-outline-variant/10 pb-2"><span class="text-slate-400 text-sm font-medium">a</span><span class="font-display text-sm font-bold text-white">a</span></div><div class="flex justify-between items-end border-b border-outline-variant/10 pb-2"><span class="text-slate-400 text-sm font-medium">v</span><span class="font-display text-sm font-bold text-white">v</span></div><div class="flex justify-between items-end border-b border-outline-variant/10 pb-2"><span class="text-slate-400 text-sm font-medium">c</span><span class="font-display text-sm font-bold text-white">c</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="space-y-4 border-t border-white/5 pt-12">
+    <h2 class="text-2xl font-display font-bold text-white">Overview</h2>
+    <div id="product-overview" class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4"><article class="blog-post">
+    <h1>AULA F75 Wireless Mechanical Keyboard Review: The Budget King</h1>
+    <p>Finding a mechanical keyboard that bridges the gap between enthusiast-grade acoustics and budget-friendly pricing is rare. The AULA F75 Wireless Mechanical Keyboard achieves just that, packing custom-level features into a readily accessible pre-built package.</p>
+    
+    <h2>Design and Build Quality</h2>
+    <p>The keyboard features an optimized 75% compact layout, saving valuable desk space without sacrificing essential navigation and function keys. Built around a leaf-spring gasket structure, it offers a flex-friendly design that reduces typing fatigue. Furthermore, its impressive five-layer internal sound-dampening construction—featuring Poron foam, an IXPE switch pad, and bottom silicone—eliminates hollow resonances to deliver a clean, satisfying acoustic profile.</p>
+
+    <h2>Performance and Features</h2>
+    <p>Under the hood, the F75 comes equipped with factory-lubricated LEOBOG Reaper switches, providing butter-smooth linear keystrokes straight out of the box. Keycaps are crafted from durable double-shot PBT in a comfortable Cherry profile. Connectivity is entirely versatile, offering three-way options: ultra-responsive 2.4GHz wireless, Bluetooth, and wired USB-C, powered by a robust 4000mAh battery that guarantees long sessions between charges.</p>
+</article></div>
+  </section>
+
+  <!-- Pros and Cons -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-2xl p-6 space-y-4">
+      <h3 class="text-lg font-bold text-emerald-400 uppercase tracking-wider">Pros</h3>
+      <ul id="pros-list" class="space-y-2 text-sm text-slate-200"><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span></span></li><li>Exceptional out-of-the-box acoustic profile with five layers of dampening</li><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span>            </span></li><li>Smooth, pre-lubricated LEOBOG Reaper switches</li><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span>            </span></li><li>Reliable tri-mode connectivity (Bluetooth, 2.4G, Wired)</li><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span>            </span></li><li>Generous 4000mAh battery capacity for extended use</li><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span>            </span></li><li>Durable Cherry-profile double-shot PBT keycaps</li><li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">+</span> <span>            </span></li><li>Full-key hot-swappable sockets and a handy media control knob</li></ul>
+    </div>
+    <div class="bg-rose-950/20 border border-rose-500/20 rounded-2xl p-6 space-y-4">
+      <h3 class="text-lg font-bold text-rose-400 uppercase tracking-wider">Cons</h3>
+      <ul id="cons-list" class="space-y-2 text-sm text-slate-200"><li class="flex items-start gap-2"><span class="text-rose-400 font-bold">-</span> <span></span></li><li>Weighing over 1kg, it is a bit heavy for frequent travel</li><li class="flex items-start gap-2"><span class="text-rose-400 font-bold">-</span> <span>            </span></li><li>Compact 75% layout takes slight getting used to if coming from a full-size board</li><li class="flex items-start gap-2"><span class="text-rose-400 font-bold">-</span> <span>            </span></li><li>Companion software interface can be cumbersome to navigate</li></ul>
+    </div>
+  </section>
+
+  <!-- Scoring & Final Verdict -->
+  <section class="bg-surface-container-low border border-white/5 rounded-2xl p-8 space-y-6">
+    <div class="flex items-center gap-6">
+      <div class="bg-primary/10 border border-primary/30 p-4 rounded-xl text-center min-w-32">
+        <span class="text-xs text-outline uppercase font-bold block">Score</span>
+        <span id="product-score" class="text-3xl font-display font-bold text-primary">1</span>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold font-display text-white">Final Verdict</h3>
+        <p id="product-verdict" class="text-slate-300 mt-2 text-sm leading-relaxed">&lt;section class="final-verdict"&gt;<br>    &lt;h2&gt;Final Verdict&lt;/h2&gt;<br>    &lt;p&gt;The &lt;strong&gt;AULA F75&lt;/strong&gt; punches well above its weight class, delivering an elite typing feel, stunning RGB lighting, and solid wireless performance that rivals custom keyboards costing twice as much. Whether you are a dedicated gamer or a daily office typist looking for an acoustic upgrade, the F75 is an absolute standout choice that easily justifies its place on your desk.&lt;/p&gt;<br>&lt;/section&gt;</p>
+      </div>
+    </div>
+
+    <!-- Author -->
+    <div class="pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-outline">
+      <span>Reviewed by:</span>
+      <span id="author-name" class="font-bold text-white">aaaa</span>
+    </div>
+  </section>
+
+  <!-- Similar Products -->
+  <section class="space-y-6 border-t border-white/5 pt-12">
+    <h3 class="text-xl font-display font-bold text-white">Similar Products in Range</h3>
+    <div id="similar-products-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const res = await fetch('../products.json');
+      const posts = await res.json();
+      const currentId = window.location.pathname.split('/').pop().replace('.html', '');
+      const current = posts.find(p => p.id === currentId);
+      const similar = posts.filter(p => p.id !== currentId).slice(0, 3);
+
+      const grid = document.getElementById('similar-products-grid');
+      if (grid && similar.length > 0) {
+        grid.innerHTML = similar.map(p => `
+          <a href="${p.id}.html" class="bg-surface-container-low p-4 rounded-xl border border-white/5 hover:border-primary/30 transition-all flex flex-col gap-3">
+            <img src="${p.image}" class="aspect-video object-cover rounded-lg">
+            <h4 class="font-bold text-white">${p.name}</h4>
+            <span class="text-primary font-mono text-sm">${p.price}</span>
+          </a>
+        `).join('');
+      }
+    } catch(e) {}
+  });
+</script>
+
+</body></html>
