@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "id": "test-2",
+    "name": "Test 2",
+    "price": "11",
+    "image": "https://aulakeyboard.com/wp-content/uploads/2025/06/203A5822_e42eb97e-11c1-48a7-9140-ad02cf54042c-600x600.webp",
+    "author": "aaaa",
+    "overview": "<article class=\"blog-post\">\n    <h1>AULA F75 Wireless Mechanical Keyboard Review: The Budget King</h1>\n    <p>Finding a mechanical keyboard that bridges the gap between enthusiast-grade acoustics and budget-friendly pricing is rare. The AULA F75 Wireless Mechanical Keyboard achieves just that, packing custom-level features into a readily accessible pre-built package.</p>\n    \n    <h2>Design and Build Quality</h2>\n    <p>The keyboard features an optimized 75% compact layout, saving valuable desk space without sacrificing essential navigation and function keys. Built around a leaf-spring gasket structure, it offers a flex-friendly design that reduces typing fatigue. Furthermore, its impressive five-layer internal sound-dampening construction—featuring Poron foam, an IXPE switch pad, and bottom silicone—eliminates hollow resonances to deliver a clean, satisfying acoustic profile.</p>\n\n    <h2>Performance and Features</h2>\n    <p>Under the hood, the F75 comes equipped with factory-lubricated LEOBOG Reaper switches, providing butter-smooth linear keystrokes straight out of the box. Keycaps are crafted from durable double-shot PBT in a comfortable Cherry profile. Connectivity is entirely versatile, offering three-way options: ultra-responsive 2.4GHz wireless, Bluetooth, and wired USB-C, powered by a robust 4000mAh battery that guarantees long sessions between charges.</p>\n</article>",
+    "pros": [
+      "<li>Exceptional out-of-the-box acoustic profile with five layers of dampening</li>",
+      "            <li>Smooth, pre-lubricated LEOBOG Reaper switches</li>",
+      "            <li>Reliable tri-mode connectivity (Bluetooth, 2.4G, Wired)</li>",
+      "            <li>Generous 4000mAh battery capacity for extended use</li>",
+      "            <li>Durable Cherry-profile double-shot PBT keycaps</li>",
+      "            <li>Full-key hot-swappable sockets and a handy media control knob</li>"
+    ],
+    "cons": [
+      "<li>Weighing over 1kg, it is a bit heavy for frequent travel</li>",
+      "            <li>Compact 75% layout takes slight getting used to if coming from a full-size board</li>",
+      "            <li>Companion software interface can be cumbersome to navigate</li>"
+    ],
+    "score": "1",
+    "verdict": "<section class=\"final-verdict\">\n    <h2>Final Verdict</h2>\n    <p>The <strong>AULA F75</strong> punches well above its weight class, delivering an elite typing feel, stunning RGB lighting, and solid wireless performance that rivals custom keyboards costing twice as much. Whether you are a dedicated gamer or a daily office typist looking for an acoustic upgrade, the F75 is an absolute standout choice that easily justifies its place on your desk.</p>\n</section>",
+    "isHot": false,
+    "url": "Keebs/test-2.html",
+    "specs": [
+      {
+        "key": "a",
+        "value": "a"
+      },
+      {
+        "key": "v",
+        "value": "v"
+      },
+      {
+        "key": "c",
+        "value": "c"
+      }
+    ],
+    "thumbnails": [],
+    "merchants": []
+  }
+]
