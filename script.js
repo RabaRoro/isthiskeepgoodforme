@@ -1,9 +1,6 @@
 let allProducts = [];
-let cart = JSON.parse(localStorage.getItem('geek_cart') || '[]');
 
 document.addEventListener('DOMContentLoaded', () => {
-  initCartUI();
-  
   if (document.getElementById('products-grid')) {
     loadProducts();
     setupFilters();
@@ -26,27 +23,27 @@ function renderGrid(posts) {
   if (!grid) return;
   
   if (!posts || posts.length === 0) {
-    grid.innerHTML = `<div class="col-span-full text-center py-12 text-outline bg-surface-container-low rounded-xl border border-white/5">No products available in the catalog yet. Add some via the Lab Command Center.</div>`;
+    grid.innerHTML = `<div class="col-span-full text-center py-12 text-outline bg-surface-container-low rounded-xl border border-white/5">No products available in the catalog yet.</div>`;
     return;
   }
   
   grid.innerHTML = posts.map(p => `
-    <a href="${p.url}" class="group bg-surface-container-low rounded-xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all flex flex-col relative">
-      <div class="aspect-video overflow-hidden relative bg-surface-container-highest">
-        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute top-3 right-3 bg-surface-container/90 backdrop-blur text-primary font-bold px-3 py-1 rounded-full text-xs border border-white/10">
-          ${p.price}
+    <div class="group relative bg-surface-container-low rounded-xl overflow-hidden transition-all duration-500 hover:translate-y-[-8px] border border-white/5">
+      <div class="aspect-[4/5] bg-surface-container-lowest relative overflow-hidden">
+        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" src="${p.image}" alt="${p.name}"/>
+        ${p.isHot ? `<div class="absolute top-4 left-4"><span class="bg-primary text-on-primary-fixed text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-xl">Hot Deal</span></div>` : ''}
+      </div>
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold tracking-tight text-white">${p.name}</h3>
+          <span class="text-primary font-mono font-bold">${p.price}</span>
         </div>
+        <p class="text-sm text-outline mb-6 line-clamp-2">${p.overview ? p.overview.replace(/<[^>]*>?/gm, '') : ''}</p>
+        <a href="${p.url}" class="inline-flex items-center gap-2 bg-surface-container-highest hover:bg-primary hover:text-on-primary-fixed transition-all text-xs font-bold px-4 py-2 rounded-xl text-primary">
+          View Setup <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
       </div>
-      <div class="p-6 space-y-3 flex-1">
-        <h3 class="font-display font-bold text-xl text-on-surface group-hover:text-primary transition-colors">${p.name}</h3>
-        <p class="text-sm text-outline line-clamp-2">${p.overview ? p.overview.replace(/<[^>]*>?/gm, '') : ''}</p>
-      </div>
-      <div class="p-6 pt-0 border-t border-white/5 mt-auto flex items-center justify-between text-xs text-outline pt-4">
-        <span class="uppercase tracking-widest text-[10px] font-bold text-primary">In Stock</span>
-        <span class="text-primary font-bold uppercase tracking-wider group-hover:gap-2 flex items-center transition-all">View Setup <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span></span>
-      </div>
-    </a>
+    </div>
   `).join('');
 }
 
@@ -75,56 +72,3 @@ function setupFilters() {
 function parsePrice(str) {
   return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
 }
-
-// Shopping Cart Functions
-window.addToCart = (id, name, price, image) => {
-  const existing = cart.find(item => item.id === id);
-  if (existing) existing.qty += 1;
-  else cart.push({ id, name, price, image, qty: 1 });
-  
-  saveCart();
-  openCart();
-};
-
-function saveCart() {
-  localStorage.setItem('geek_cart', JSON.stringify(cart));
-  initCartUI();
-}
-
-function initCartUI() {
-  const countEl = document.getElementById('cart-count');
-  const itemsEl = document.getElementById('cart-items');
-  const totalEl = document.getElementById('cart-total');
-  
-  if (countEl) countEl.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
-  
-  if (itemsEl) {
-    itemsEl.innerHTML = cart.map(item => `
-      <div class="flex items-center justify-between bg-surface-container-low p-3 rounded-xl border border-white/5">
-        <div class="flex items-center gap-3">
-          <img src="${item.image}" class="w-12 h-12 rounded object-cover">
-          <div>
-            <h4 class="text-xs font-bold text-on-surface">${item.name}</h4>
-            <span class="text-xs text-primary">${item.price} x ${item.qty}</span>
-          </div>
-        </div>
-        <button onclick="removeFromCart('${item.id}')" class="text-outline hover:text-red-400 text-sm">&times;</button>
-      </div>
-    `).join('');
-  }
-
-  if (totalEl) {
-    const total = cart.reduce((acc, item) => acc + (parsePrice(item.price) * item.qty), 0);
-    totalEl.innerText = `৳${total.toLocaleString()}`;
-  }
-
-  document.getElementById('cart-link')?.addEventListener('click', openCart);
-  document.getElementById('close-cart')?.addEventListener('click', closeCart);
-}
-
-function openCart() { document.getElementById('cart-slider')?.classList.remove('translate-x-full'); }
-function closeCart() { document.getElementById('cart-slider')?.classList.add('translate-x-full'); }
-window.removeFromCart = (id) => {
-  cart = cart.filter(item => item.id !== id);
-  saveCart();
-};
