@@ -21,31 +21,30 @@ async function loadProducts() {
   }
 }
 
-function renderGrid(products) {
+// Replace your existing renderGrid function in script.js with this:
+function renderGrid(posts) {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
   
-  grid.innerHTML = products.map(p => `
-    <div class="bg-surface-container-low rounded-xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all flex flex-col justify-between">
-      <a href="${p.url}">
-        <div class="aspect-[4/5] overflow-hidden">
-          <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+  grid.innerHTML = posts.map(p => `
+    <a href="${p.url}" class="group bg-surface-container-low rounded-xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all flex flex-col">
+      <div class="aspect-video overflow-hidden relative">
+        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute top-3 right-3 bg-gray-900/90 backdrop-blur text-emerald-400 font-bold px-3 py-1 rounded-full text-sm border border-emerald-900/50">
+          ★ ${p.avgScore}
         </div>
-        <div class="p-6 space-y-2">
-          <h3 class="font-bold text-lg text-on-surface">${p.name}</h3>
-          <p class="text-primary font-bold">${p.price}</p>
-          <p class="text-xs text-on-surface-variant line-clamp-2">${p.meta}</p>
-        </div>
-      </a>
-      <div class="p-6 pt-0">
-        <button onclick="addToCart('${p.id}', '${p.name}', '${p.price}', '${p.image}')" class="w-full py-2 bg-surface-variant hover:bg-primary hover:text-on-primary-fixed text-xs font-bold rounded-lg transition-colors">
-          Add to Cart
-        </button>
       </div>
-    </div>
+      <div class="p-6 space-y-3 flex-1">
+        <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-300 transition-colors">${p.name}</h3>
+        <p class="text-sm text-slate-400 line-clamp-2">${p.overview.replace(/<[^>]*>?/gm, '')}</p>
+      </div>
+      <div class="p-6 pt-0 border-t border-white/5 mt-auto flex items-center justify-between text-xs text-slate-500 pt-4">
+        <span>By ${p.author || 'Geek Shop'}</span>
+        <span class="text-purple-400 font-bold uppercase tracking-wider">Read Review →</span>
+      </div>
+    </a>
   `).join('');
 }
-
 function setupFilters() {
   const searchInput = document.getElementById('search-input');
   const globalSearch = document.getElementById('global-search-input');
