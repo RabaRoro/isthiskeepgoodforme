@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": "test",
+    "name": "Test",
+    "price": "5200",
+    "image": "https://d8iqbmvu05s9c.cloudfront.net/ajprhqgqg1otf7d5sm7u3brf27gv",
+    "overview": "asdfsd",
+    "detailedDesc": "sdfasdfasdfasdfas",
+    "isHot": false,
+    "url": "Keebs/test.html",
+    "specs": [
+      {
+        "key": "asdf",
+        "value": "asdfasdf"
+      },
+      {
+        "key": "sa",
+        "value": "adsfasdf"
+      },
+      {
+        "key": "aa",
+        "value": "adsfasdf"
+      }
+    ],
+    "thumbnails": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBTjYzrWlLbot1Ortf6upFUWy3OUDPBRa7Mw7-WRrpGZe1M3qKLz-i0Uvh&s=10"
+    ],
+    "merchants": [
+      {
+        "name": "tech divercity",
+        "url": "https://techdiversitybd.com/aula-f75-wireless-mechanical-keyboard/?srsltid=AfmBOoqJUvuvHv6BDLhyNcu9iV0ciaaGKPnCOvqFpWpbRgk-wx_S7y0b",
+        "price": "",
+        "stock": ""
+      }
+    ]
+  }
+]
