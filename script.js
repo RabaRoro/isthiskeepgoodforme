@@ -17,34 +17,39 @@ async function loadProducts() {
     allProducts = await res.json();
     renderGrid(allProducts);
   } catch (err) {
-    grid.innerHTML = `<p class="text-slate-400">No products found or error loading store database.</p>`;
+    grid.innerHTML = `<p class="text-outline col-span-full text-center py-10">No products found or error loading store database.</p>`;
   }
 }
 
-// Replace your existing renderGrid function in script.js with this:
 function renderGrid(posts) {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
   
+  if (!posts || posts.length === 0) {
+    grid.innerHTML = `<div class="col-span-full text-center py-12 text-outline bg-surface-container-low rounded-xl border border-white/5">No products available in the catalog yet. Add some via the Lab Command Center.</div>`;
+    return;
+  }
+  
   grid.innerHTML = posts.map(p => `
-    <a href="${p.url}" class="group bg-surface-container-low rounded-xl overflow-hidden border border-white/5 hover:border-purple-500/30 transition-all flex flex-col">
-      <div class="aspect-video overflow-hidden relative">
+    <a href="${p.url}" class="group bg-surface-container-low rounded-xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all flex flex-col relative">
+      <div class="aspect-video overflow-hidden relative bg-surface-container-highest">
         <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute top-3 right-3 bg-gray-900/90 backdrop-blur text-emerald-400 font-bold px-3 py-1 rounded-full text-sm border border-emerald-900/50">
-          ★ ${p.avgScore}
+        <div class="absolute top-3 right-3 bg-surface-container/90 backdrop-blur text-primary font-bold px-3 py-1 rounded-full text-xs border border-white/10">
+          ${p.price}
         </div>
       </div>
       <div class="p-6 space-y-3 flex-1">
-        <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-300 transition-colors">${p.name}</h3>
-        <p class="text-sm text-slate-400 line-clamp-2">${p.overview.replace(/<[^>]*>?/gm, '')}</p>
+        <h3 class="font-display font-bold text-xl text-on-surface group-hover:text-primary transition-colors">${p.name}</h3>
+        <p class="text-sm text-outline line-clamp-2">${p.overview ? p.overview.replace(/<[^>]*>?/gm, '') : ''}</p>
       </div>
-      <div class="p-6 pt-0 border-t border-white/5 mt-auto flex items-center justify-between text-xs text-slate-500 pt-4">
-        <span>By ${p.author || 'Geek Shop'}</span>
-        <span class="text-purple-400 font-bold uppercase tracking-wider">Read Review →</span>
+      <div class="p-6 pt-0 border-t border-white/5 mt-auto flex items-center justify-between text-xs text-outline pt-4">
+        <span class="uppercase tracking-widest text-[10px] font-bold text-primary">In Stock</span>
+        <span class="text-primary font-bold uppercase tracking-wider group-hover:gap-2 flex items-center transition-all">View Setup <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span></span>
       </div>
     </a>
   `).join('');
 }
+
 function setupFilters() {
   const searchInput = document.getElementById('search-input');
   const globalSearch = document.getElementById('global-search-input');
@@ -52,7 +57,7 @@ function setupFilters() {
 
   const filterHandler = () => {
     const term = (searchInput?.value || globalSearch?.value || '').toLowerCase();
-    let filtered = allProducts.filter(p => p.name.toLowerCase().includes(term) || p.meta.toLowerCase().includes(term));
+    let filtered = allProducts.filter(p => p.name.toLowerCase().includes(term) || (p.overview || '').toLowerCase().includes(term));
     
     if (sortSelect?.value === 'price-low') {
       filtered.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
@@ -68,7 +73,7 @@ function setupFilters() {
 }
 
 function parsePrice(str) {
-  return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+  return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
 }
 
 // Shopping Cart Functions
@@ -103,7 +108,7 @@ function initCartUI() {
             <span class="text-xs text-primary">${item.price} x ${item.qty}</span>
           </div>
         </div>
-        <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-red-400 text-sm">&times;</button>
+        <button onclick="removeFromCart('${item.id}')" class="text-outline hover:text-red-400 text-sm">&times;</button>
       </div>
     `).join('');
   }
@@ -113,7 +118,6 @@ function initCartUI() {
     totalEl.innerText = `৳${total.toLocaleString()}`;
   }
 
-  // Cart open/close triggers
   document.getElementById('cart-link')?.addEventListener('click', openCart);
   document.getElementById('close-cart')?.addEventListener('click', closeCart);
 }
